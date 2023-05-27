@@ -1,5 +1,14 @@
 import React from "react";
 import "./message.styles.scss";
+import { Message as MessageType } from "../../types/IndexTypes";
+
+type Props = {
+  filteredMessages: MessageType[];
+  selectedContactImgURL: string;
+  logedUserAbbreviation: string;
+  selectedContactLastMessage: string;
+  selectedContactLastMessageDate: string;
+};
 
 export const Message = ({
   filteredMessages,
@@ -7,7 +16,7 @@ export const Message = ({
   logedUserAbbreviation,
   selectedContactLastMessage,
   selectedContactLastMessageDate,
-}) => {
+}: Props) => {
   return (
     <>
       <div className="message">

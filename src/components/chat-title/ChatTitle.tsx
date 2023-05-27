@@ -4,8 +4,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import IconButton from "@mui/material/IconButton";
 import "./chat-title.styles.scss";
+import { Contact } from "../../types/IndexTypes";
 
-export const ChatTitle = ({ selectedContact }) => {
+type Props = {
+  selectedContact: Contact[];
+};
+
+export const ChatTitle = ({ selectedContact }: Props) => {
   const isLogin = selectedContact.map((contact) => contact.isLogin);
 
   return (

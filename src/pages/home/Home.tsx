@@ -4,10 +4,16 @@ import { Chat } from "../../components/chat/Chat";
 import axios from "axios";
 import { getFirstLetter } from "../../functions/functions";
 import "./home.style.scss";
+import { Contact, Message, User } from "../../types/IndexTypes";
 
-export const Home = ({ curUserContacts, currentUser }) => {
-  const [selectedContact, setSelectedContact] = useState([]);
-  const [filteredMessages, setFilteredMessages] = useState([]);
+type Props = {
+  curUserContacts: Contact[];
+  currentUser: User[];
+};
+
+export const Home = ({ curUserContacts, currentUser }: Props) => {
+  const [selectedContact, setSelectedContact] = useState<Contact[]>([]);
+  const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
 
   const logedUserId = currentUser.map((user) => user.userId);
   const logedUserFirstName = currentUser.map((user) => user.firstName);
@@ -17,7 +23,7 @@ export const Home = ({ curUserContacts, currentUser }) => {
   )}${getFirstLetter(logedUserLastName)}`;
   const selectedContactId = selectedContact.map((contact) => contact.contactId);
 
-  const handleClickContact = async (id) => {
+  const handleClickContact = async (id: string) => {
     await fetch(`http://localhost:5000/contacts/allcontacts/${id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -42,15 +48,11 @@ export const Home = ({ curUserContacts, currentUser }) => {
       <div className="container">
         <Sidebar
           curUserContacts={curUserContacts}
-          setSelectedContact={setSelectedContact}
-          currentUser={currentUser}
-          getMessage={getMessage}
           handleClickContact={handleClickContact}
         />
         <Chat
           selectedContact={selectedContact}
           currentUser={currentUser}
-          curUserContacts={curUserContacts}
           getMessage={getMessage}
           filteredMessages={filteredMessages}
           logedUserAbbreviation={logedUserAbbreviation}

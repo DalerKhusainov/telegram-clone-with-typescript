@@ -5,7 +5,15 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import "./input-message.styles.scss";
 
-export const InputMessage = ({ messageInputRef, handleMessageInput }) => {
+type Props = {
+  messageInputRef: any;
+  handleMessageInput: () => void;
+};
+
+export const InputMessage = ({
+  messageInputRef,
+  handleMessageInput,
+}: Props) => {
   return (
     <div className="input-message">
       <div className="input-message__attach-icon">

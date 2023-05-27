@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import "./search-contacts.scss";
 
-export const SearchContacts = ({ setSelectedContact }) => {
+export const SearchContacts = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {

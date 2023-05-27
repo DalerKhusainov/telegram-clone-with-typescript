@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./contact.styles.scss";
+import { Contact } from "../../types/IndexTypes";
 
-export const Contacts = ({
-  contact,
-  setSelectedContact,
-  currentUser,
-  getMessage,
-  handleClickContact,
-}) => {
+type Props = {
+  contact: Contact;
+  handleClickContact: (contactId: string) => void;
+};
+
+export const Contacts = ({ contact, handleClickContact }: Props) => {
   const {
     contactId,
     contactFirstName,

@@ -1,10 +1,20 @@
 import React, { useEffect, useRef } from "react";
+// @ts-ignore
 import { v4 as uuid } from "uuid";
 import { setNewDate } from "../../functions/functions";
 import { ChatTitle } from "../chat-title/ChatTitle";
 import { MessagesList } from "../messages-list/MessagesList";
 import { InputMessage } from "../input-message/InputMessage";
 import "./chat.styles.scss";
+import { Contact, Message, User } from "../../types/IndexTypes";
+
+type Props = {
+  selectedContact: Contact[];
+  currentUser: User[];
+  getMessage: () => void;
+  filteredMessages: Message[];
+  logedUserAbbreviation: string;
+};
 
 export const Chat = ({
   selectedContact,
@@ -12,8 +22,8 @@ export const Chat = ({
   getMessage,
   filteredMessages,
   logedUserAbbreviation,
-}) => {
-  const messageInputRef = useRef();
+}: Props) => {
+  const messageInputRef = useRef<any>();
 
   const logedUserId = currentUser.map((user) => user.userId);
   const selectedContactId = selectedContact.map((contact) => contact.contactId);

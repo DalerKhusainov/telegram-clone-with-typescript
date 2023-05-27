@@ -2,22 +2,19 @@ import React from "react";
 import "./sidebar.styles.scss";
 import { SearchContacts } from "../search-contacts/SearchContacts";
 import { ContactsList } from "../contacts-list/ContactsList";
+import { Contact } from "../../types/IndexTypes";
 
-export const Sidebar = ({
-  curUserContacts,
-  setSelectedContact,
-  currentUser,
-  getMessage,
-  handleClickContact,
-}) => {
+type Props = {
+  curUserContacts: Contact[];
+  handleClickContact: (contactId: string) => void;
+};
+
+export const Sidebar = ({ curUserContacts, handleClickContact }: Props) => {
   return (
     <div className="sidebar">
-      <SearchContacts setSelectedContact={setSelectedContact} />
+      <SearchContacts />
       <ContactsList
         curUserContacts={curUserContacts}
-        setSelectedContact={setSelectedContact}
-        currentUser={currentUser}
-        getMessage={getMessage}
         handleClickContact={handleClickContact}
       />
     </div>

@@ -7,7 +7,7 @@ export const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const user = {
       firstName: e.target[0].value,

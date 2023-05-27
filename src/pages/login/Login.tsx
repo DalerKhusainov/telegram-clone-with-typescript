@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.style.scss";
+import { Contact, User } from "../../types/IndexTypes";
 
-export const Login = ({ setCurUserContacts, setCurrentUser }) => {
-  const [err, setErr] = useState(false);
-  const [users, setUsers] = useState([]);
+type Props = {
+  setCurUserContacts: (contacts: Contact[]) => void;
+  setCurrentUser: (user: User[]) => void;
+};
+
+export const Login = ({ setCurUserContacts, setCurrentUser }: Props) => {
+  const [err, setErr] = useState<boolean>(false);
+  const [users, setUsers] = useState<User[]>([]);
 
   console.log(users);
 
@@ -18,7 +24,7 @@ export const Login = ({ setCurUserContacts, setCurrentUser }) => {
       .catch((err) => setErr(true));
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
